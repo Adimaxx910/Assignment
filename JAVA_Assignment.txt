@@ -1,0 +1,126 @@
+				ADITHYA
+   ***************************************************************************
+________________________________________________________________________________________________________________________________________________________
+A. Create an array with the values (1, 2, 3, 4, 5, 6, 7) and shuffle it. 
+-------------------------------------------------------------------------------------------------------------------------
+
+import java.util.*;
+public class Java_assignment {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Integer[] MyArray= {1,2,3,4,5,6,7};
+		ArrayList<Integer>MyList=new ArrayList<Integer>();
+		ArrayList<Integer>MyList2=new ArrayList<Integer>();
+		for(int i=0;i<MyArray.length;i++) {
+			if(IsPrime(MyArray[i])) {
+				MyList.add(MyArray[i]);
+			}
+			if(!IsPrime(MyArray[i])) {
+				MyList2.add(MyArray[i]);
+			}
+     	   	}
+		for(int i=MyList2.size();i>0;i--) {
+			MyList.add(i);
+		}
+		System.out.println(MyList);
+
+	}
+	
+	public static boolean IsPrime(int num) {
+		if(num<=1) {
+			return false;
+		}
+		if(num==2) {
+			return true;
+		}
+		for(int i=2;i<=num/2;i++) {		
+			if(num%i==0 ) {		
+				return false;
+			}
+		}
+		return true;
+		
+	}
+}
+_________________________________________________________________________________________
+B. Enter a Roman Number as input and convert it to an integer. (ex IX = 9) 
+----------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+public class RomantoInteger {
+
+	public static void main(String[] args) {
+		Scanner max=new Scanner(System.in);
+		System.out.println("Enter A Number in Roman::");
+		String romanNumber=max.nextLine();	
+		romanNumber=romanNumber.toUpperCase();
+;        int num=0;
+        int length=romanNumber.length();
+        for(int i=0;i<length;i++) {
+        	if(i>0 && IntegerValue(romanNumber.charAt(i))>IntegerValue(romanNumber.charAt(i-1))) {
+        		 num+=IntegerValue(romanNumber.charAt(i));
+        		num-=2;
+        		 System.out.println(num);
+        	}
+        	else {
+        		num+=IntegerValue(romanNumber.charAt(i));
+        	}    
+        }
+        
+        System.out.println(num);
+       max.close();
+	}
+	
+	public static int IntegerValue(char c) {
+		if(c=='I') 
+		{
+			return 1;
+		}
+		else if(c=='V') {
+			return 5;
+		}
+		else if(c=='X') {
+			return 10;
+		}
+		else if(c=='L') {
+			return 50;
+		}
+		else if(c=='C') {
+			return 100;
+		}
+		else if(c=='D') {
+			return 500;
+		}
+		else if(c=='M') {
+			return 1000;
+		}
+		return 0;
+	}
+
+}
+______________________________________________________________________________________________
+C. Check if the input is pangram or not. (Pangram is a sentence that contains all the alphabet from a-z) 
+_--------------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+public class PangramOrNot {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner max=new Scanner(System.in);
+		System.out.println("Enter pangram string::");
+		String input=max.nextLine();
+		input=input.toLowerCase();
+		HashSet<Character> MySet=new HashSet<Character>();
+		for(int i=0;i<input.length();i++) {
+			MySet.add(input.charAt(i));
+		}
+		if(MySet.size()==26) {
+			System.out.println("Yes! String is PanGram...");
+		}
+		else {
+			System.out.println("Sorry! String is NOT PANGram...");
+		}
+		max.close();
+	}
+
+}
